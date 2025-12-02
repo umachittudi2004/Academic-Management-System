@@ -23,7 +23,7 @@ server/build/
 server/dist/
 server/tmp/
 server/logs/
-
+server/google-drive-token.json
 # ---- Client ----
 client/node_modules/
 client/.env
