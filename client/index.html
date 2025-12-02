@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Department Application</title>
+    <meta name="color-scheme" content="light dark" />
+    <style>
+      :root {
+        --bg: #0b1020;
+        --card: #111730;
+        --accent: #6c9aff;
+        --accent-2: #8ef6ff;
+        --text: #eaf0ff;
+        --muted: #a8b2d1;
+        --danger: #ff6b6b;
+        --ok: #22c55e;
+        --warning: #f59e0b;
+      }
+      * { box-sizing: border-box; }
+      html, body, #root { height: 100%; }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+        background: radial-gradient(1200px 800px at 10% 10%, #0e1532, #090d1a 60%);
+        color: var(--text);
+      }
+      a { color: var(--accent-2); text-decoration: none; }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 16px;
+      }
+      .card {
+        background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 16px;
+        padding: 18px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.03);
+        backdrop-filter: blur(10px);
+      }
+      .btn {
+        border: 1px solid rgba(255,255,255,0.12);
+        background: linear-gradient(180deg, rgba(108,154,255,0.25), rgba(108,154,255,0.15));
+        color: var(--text);
+        padding: 10px 14px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: transform 0.1s ease, box-shadow 0.2s ease;
+        box-shadow: 0 6px 18px rgba(108,154,255,0.25);
+      }
+      .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(108,154,255,0.35); }
+      .btn.secondary {
+        background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.08));
+      }
+      .btn.danger {
+        background: linear-gradient(180deg, rgba(255,107,107,0.25), rgba(255,107,107,0.15));
+        box-shadow: 0 6px 18px rgba(255,107,107,0.25);
+        border-color: rgba(255,107,107,0.4);
+      }
+      .btn.ok {
+        background: linear-gradient(180deg, rgba(34,197,94,0.25), rgba(34,197,94,0.15));
+        border-color: rgba(34,197,94,0.4);
+        box-shadow: 0 6px 18px rgba(34,197,94,0.25);
+      }
+      .input, select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(17,23,48,0.6);
+        color: var(--text);
+        outline: none;
+      }
+      .grid {
+        display: grid;
+        gap: 14px;
+      }
+      .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      @media (max-width: 800px) {
+        .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      }
+      .muted { color: var(--muted); }
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(8px);
+        background: rgba(9,13,26,0.6);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+      }
+      .brand {
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 18px;
+      }
+      .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+      .tag {
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.12);
+        color: var(--muted);
+      }
+      .sep { height: 1px; background: rgba(255,255,255,0.08); margin: 12px 0; }
+      .list { display: grid; gap: 10px; }
+      .link { color: var(--accent-2); text-decoration: underline; cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

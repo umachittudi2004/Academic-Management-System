@@ -1,0 +1,233 @@
+/* client/src/components.css */
+
+/* ============================================
+   DEPARTMENT APPLICATION - COMPONENT STYLES
+   Extracted from inline styles - NO VISUAL CHANGES
+   ============================================ */
+
+/* === LAYOUT === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sep {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 16px 0;
+}
+
+/* === CARD === */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.2s ease;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* === BUTTONS === */
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: rgba(108, 154, 255, 0.2);
+  border: 1px solid rgba(108, 154, 255, 0.4);
+  color: #bfdbfe;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: rgba(108, 154, 255, 0.3);
+  border-color: rgba(108, 154, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn.secondary {
+  background: rgba(147, 197, 253, 0.1);
+  border-color: rgba(147, 197, 253, 0.3);
+  color: #bfdbfe;
+}
+
+.btn.secondary:hover {
+  background: rgba(147, 197, 253, 0.2);
+  border-color: rgba(147, 197, 253, 0.5);
+}
+
+.btn.danger {
+  background: rgba(255, 107, 107, 0.2);
+  border-color: rgba(255, 107, 107, 0.4);
+  color: #ffb0b0;
+}
+
+.btn.danger:hover {
+  background: rgba(255, 107, 107, 0.3);
+  border-color: rgba(255, 107, 107, 0.6);
+}
+
+/* === INPUTS === */
+/* === INPUTS === */
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.87);
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgba(108, 154, 255, 0.6);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Fix for select dropdowns */
+select.input {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.6)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+select.input:focus {
+  border-color: rgba(108, 154, 255, 0.6);
+}
+
+/* Dropdown options styling */
+select.input option {
+  background: #1a1a1a;
+  color: rgba(255, 255, 255, 0.87);
+  padding: 12px;
+}
+
+textarea.input {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+/* === TAGS === */
+.tag {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  border: 1px solid rgba(147, 197, 253, 0.4);
+  color: #bfdbfe;
+  white-space: nowrap;
+}
+
+/* === NAVBAR === */
+.nav {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  padding: 0 20px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* === TEXT UTILITIES === */
+.muted {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .nav-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-inner .row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .btn {
+    font-size: 0.875rem;
+    padding: 8px 16px;
+  }
+}
