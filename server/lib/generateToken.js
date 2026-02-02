@@ -1,14 +1,26 @@
 import jwt from 'jsonwebtoken';
 
-export const generateToken = (id,res,role) => {
+export const generateToken = (id, res, role) => {
     const expirationTime = 24*60*60*1000; // 24 hours in milliseconds
-    const token = jwt.sign({ id,role }, process.env.JWT_SECRETKEY, {
+    
+    const token = jwt.sign({ id, role }, process.env.JWT_SECRETKEY, {
         expiresIn: '1d'
-    })
-    res.cookie('token', token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV !== 'development',
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-        maxAge: expirationTime, // 1 day 
     });
-}
+    
+    // Cookie options based on environment
+    const cookieOptions = {
+        httpOnly: true,
+        maxAge: expirationTime, // 1 day
+    };
+    
+    // Add production-specific settings
+    if (process.env.NODE_ENV === 'production') {
+        cookieOptions.secure = true;
+        cookieOptions.sameSite = 'none';
+    } else {
+        cookieOptions.secure = false;
+        cookieOptions.sameSite = 'lax';
+    }
+    
+    res.cookie('token', token, cookieOptions);
+};
