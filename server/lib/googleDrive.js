@@ -18,15 +18,13 @@ const TOKEN_PATH = path.join(process.cwd(), 'google-drive-token.json');
 export const loadTokens = () => {
     try {
 
-         if (process.env. GOOGLE_DRIVE_TOKENS) {
+         if (process.env.GOOGLE_DRIVE_TOKENS) {
             console.log('🔑 Loading Google Drive tokens from environment.. .');
             const tokens = JSON.parse(process.env.GOOGLE_DRIVE_TOKENS);
             oauth2Client. setCredentials(tokens);
             console.log('✅ Google Drive tokens loaded from environment');
             return true;
         }
-
-
 
         if (fs.existsSync(TOKEN_PATH)) {
             const tokens = JSON.parse(fs.readFileSync(TOKEN_PATH, 'utf-8'));
