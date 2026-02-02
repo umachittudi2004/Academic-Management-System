@@ -7,20 +7,10 @@ export const generateToken = (id, res, role) => {
         expiresIn: '1d'
     });
     
-    // Cookie options based on environment
-    const cookieOptions = {
+    res.cookie('token', token, {
         httpOnly: true,
-        maxAge: expirationTime, // 1 day
-    };
-    
-    // Add production-specific settings
-    if (process.env.NODE_ENV === 'production') {
-        cookieOptions.secure = true;
-        cookieOptions.sameSite = 'none';
-    } else {
-        cookieOptions.secure = false;
-        cookieOptions.sameSite = 'lax';
-    }
-    
-    res.cookie('token', token, cookieOptions);
+        secure: true,
+        sameSite: 'none',
+        maxAge: expirationTime
+    });
 };
