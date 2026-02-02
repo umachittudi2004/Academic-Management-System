@@ -239,6 +239,8 @@
 import { google } from 'googleapis';
 import fs from 'fs';
 import path from 'path';
+import dotenv from 'dotenv';
+dotenv.config();
 
 // Initialize OAuth2 client
 const oauth2Client = new google.auth.OAuth2(
@@ -260,6 +262,7 @@ export const loadTokens = () => {
         // PRIORITY 1: Try loading from environment variables (for production)
         if (process.env.GOOGLE_DRIVE_TOKENS) {
             console.log('🔑 Loading Google Drive tokens from environment...');
+            console.log(process.env.GOOGLE_DRIVE_TOKENS);
             tokens = JSON.parse(process.env.GOOGLE_DRIVE_TOKENS);
         }
         // PRIORITY 2: Try loading from file (for local development)
