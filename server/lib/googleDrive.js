@@ -17,6 +17,17 @@ const TOKEN_PATH = path.join(process.cwd(), 'google-drive-token.json');
  */
 export const loadTokens = () => {
     try {
+
+         if (process.env. GOOGLE_DRIVE_TOKENS) {
+            console.log('🔑 Loading Google Drive tokens from environment.. .');
+            const tokens = JSON.parse(process.env.GOOGLE_DRIVE_TOKENS);
+            oauth2Client. setCredentials(tokens);
+            console.log('✅ Google Drive tokens loaded from environment');
+            return true;
+        }
+
+
+
         if (fs.existsSync(TOKEN_PATH)) {
             const tokens = JSON.parse(fs.readFileSync(TOKEN_PATH, 'utf-8'));
             oauth2Client.setCredentials(tokens);
@@ -36,9 +47,13 @@ export const loadTokens = () => {
  */
 export const saveTokens = (tokens) => {
     try {
-        fs.writeFileSync(TOKEN_PATH, JSON.stringify(tokens));
+        fs.writeFileSync(TOKEN_PATH, JSON.stringify(tokens, null, 2));
         oauth2Client.setCredentials(tokens);
-        console.log('✅ Tokens saved successfully');
+        console.log('✅ Tokens saved successfully in file');
+        console.log('\n🔔 IMPORTANT: For production deployment, add this to environment variables:');
+        console.log('GOOGLE_DRIVE_TOKENS=' + JSON.stringify(tokens));
+        console.log('\n');
+
         return true;
     } catch (error) {
         console.error('❌ Error saving tokens:', error.message);
@@ -212,7 +227,7 @@ export const deleteFromDrive = async (fileId) => {
  * Check if authorized
  */
 export const isAuthorized = () => {
-    return fs.existsSync(TOKEN_PATH);
+    return !!process.env.GOOGLE_DRIVE_TOKENS || fs.existsSync(TOKEN_PATH);
 };
 
 // Load tokens on initialization

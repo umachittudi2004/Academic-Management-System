@@ -7,5 +7,17 @@ export default defineConfig({
   server: {
     port: 5173,
     host: true
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'animation':  ['framer-motion'],
+          'socket':  ['socket.io-client'],
+          'http': ['axios']
+      }
+    }
   }
 })
