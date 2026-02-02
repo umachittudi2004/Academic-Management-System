@@ -2,6 +2,7 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import { Student } from '../models/student.model.js';
 import { generateToken } from '../lib/generateToken.js';
+import { clearToken } from '../lib/generateToken.js';
 import { Faculty } from '../models/faculty.model.js';
 import { AttendenceAccess } from '../models/attendenceaccess.model.js';
 
@@ -47,7 +48,8 @@ export const studentLogoutAuth = async (req, res) => {
         if (availableSession.length > 0) {
             return res.status(400).json({ message: "You can't logout until the active attendence sessions ends" })
         }
-        res.clearCookie('token')
+        clearToken(res);
+        // res.clearCookie('token')
         res.status(200).json({ message: "Logout successful" })
     } catch (error) {
         console.log(error);
@@ -129,7 +131,8 @@ export const facultyLoginAuth = async (req, res) => {
 
 export const facultyLogoutAuth = async (req, res) => {
     try {
-        res.clearCookie('token')        
+        clearToken(res);
+        // res.clearCookie('token')        
         res.status(200).json({ message: "Logout successful" })
     } catch (error) {
         console.log(error);

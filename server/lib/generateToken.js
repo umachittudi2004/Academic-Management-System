@@ -14,3 +14,12 @@ export const generateToken = (id, res, role) => {
         maxAge: expirationTime
     });
 };
+
+export const clearToken = (res) => {
+    res.clearCookie('token', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none',
+        path: '/'
+    });
+};
